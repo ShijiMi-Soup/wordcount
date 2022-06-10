@@ -16,6 +16,7 @@ const Index = () => {
   const [halfSpaceCount, setHalfSpaceCount] = useState<number>(0)
   const [fullSpaceCount, setFullSpaceCount] = useState<number>(0)
   const [newLineCount, setNewLineCount] = useState<number>(0)
+  const [paperCount, setPaperCount] = useState<number>(0)
 
   const handleInputChange = (e) => {
     const { value } = e.target
@@ -34,10 +35,12 @@ const Index = () => {
     const halfSpaces = textValue.split(" ").length - 1
     const fullSpaces = textValue.split("　").length - 1
     const newLines = textValue.split(/\r\n|\r|\n/).length - 1
+    const papers = Math.round((texts * 10) / 400) / 10
     setTextCount(texts - halfSpaces - fullSpaces - newLines)
     setHalfSpaceCount(halfSpaces)
     setFullSpaceCount(fullSpaces)
     setNewLineCount(newLines)
+    setPaperCount(papers)
   }, [textValue])
 
   return (
@@ -57,7 +60,7 @@ const Index = () => {
             文字
           </Text>
           <Text>改行{newLineCount}文字</Text>
-          <Text>原稿用紙{newLineCount}枚</Text>
+          <Text>原稿用紙{paperCount}枚</Text>
         </Box>
       </Box>
       <Textarea
