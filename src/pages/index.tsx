@@ -72,7 +72,6 @@ const Index = () => {
         flexGrow={1}
         value={textValue}
         onChange={handleInputChange}
-        on
         placeholder="文字を入力してください"
         resize="none"
         border="none"
