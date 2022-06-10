@@ -21,8 +21,13 @@ const Index = () => {
   const handleInputChange = (e) => {
     const { value } = e.target
     setTextValue(value)
+    localStorage.setItem("text", value)
   }
 
+  useEffect(() => {
+    const previous = localStorage.getItem("text")
+    if (previous) setTextValue(previous)
+  }, [])
   useEffect(() => {
     if (!textValue) {
       setTextCount(0)
@@ -67,6 +72,7 @@ const Index = () => {
         flexGrow={1}
         value={textValue}
         onChange={handleInputChange}
+        on
         placeholder="文字を入力してください"
         resize="none"
         border="none"
