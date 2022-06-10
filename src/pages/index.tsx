@@ -1,56 +1,77 @@
 import {
   Link as ChakraLink,
+  Heading,
+  Textarea,
   Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+  Box
+} from "@chakra-ui/react"
 
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+import { Container } from "../components/Container"
+import { useEffect, useState } from "react"
 
-const Index = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text color="text">
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>TypeScript</Code>.
-      </Text>
+const Index = () => {
+  const year = new Date().getFullYear()
+  const [textValue, setTextValue] = useState<string | undefined>()
+  const [textCount, setTextCount] = useState<number>(0)
+  const [halfSpaceCount, setHalfSpaceCount] = useState<number>(0)
+  const [fullSpaceCount, setFullSpaceCount] = useState<number>(0)
+  const [newLineCount, setNewLineCount] = useState<number>(0)
 
-      <List spacing={3} my={0} color="text">
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
+  const handleInputChange = (e) => {
+    const { value } = e.target
+    setTextValue(value)
+  }
 
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
-    <CTA />
-  </Container>
-)
+  useEffect(() => {
+    if (!textValue) {
+      setTextCount(0)
+      setHalfSpaceCount(0)
+      setFullSpaceCount(0)
+      setNewLineCount(0)
+      return
+    }
+    const texts = textValue.split("").length
+    const halfSpaces = textValue.split(" ").length - 1
+    const fullSpaces = textValue.split("　").length - 1
+    const newLines = textValue.split(/\r\n|\r|\n/).length - 1
+    setTextCount(texts - halfSpaces - fullSpaces - newLines)
+    setHalfSpaceCount(halfSpaces)
+    setFullSpaceCount(fullSpaces)
+    setNewLineCount(newLines)
+  }, [textValue])
+
+  return (
+    <Container height="100vh" py={5}>
+      <Box w="100%" display="flex" flexDir="column" alignItems="center">
+        <Heading as="h1">文字数カウンタ</Heading>
+        <Box>
+          <Text>{textCount}文字</Text>
+          <Text>
+            半角スペース
+            {halfSpaceCount}
+            文字
+          </Text>
+          <Text>
+            全角スペース
+            {fullSpaceCount}
+            文字
+          </Text>
+          <Text>改行{newLineCount}文字</Text>
+          <Text>原稿用紙{newLineCount}枚</Text>
+        </Box>
+      </Box>
+      <Textarea
+        flexGrow={1}
+        value={textValue}
+        onChange={handleInputChange}
+        placeholder="文字を入力してください"
+        resize="none"
+        border="none"
+        focusBorderColor="none"
+      />
+      <footer>&copy; {year} SHijiMi</footer>
+    </Container>
+  )
+}
 
 export default Index
