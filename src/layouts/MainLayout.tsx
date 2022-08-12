@@ -17,7 +17,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       p={5}
     >
       <Heading as="h1" display="none">
-        文字数カウンタ
+        文字数カウンター
       </Heading>
       <Box as="section" w="100%" flexGrow={1}>
         {children}

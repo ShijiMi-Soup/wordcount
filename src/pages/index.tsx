@@ -1,5 +1,3 @@
-import { Heading, Box } from "@chakra-ui/react"
-
 import { FlexContainer } from "../components/FlexContainer"
 import { useState } from "react"
 import Textarea from "../components/Textarea"

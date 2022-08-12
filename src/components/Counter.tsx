@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react"
+import { Flex, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useTextValueContext } from "../providers"
 
@@ -30,10 +30,16 @@ const Counter = () => {
   }, [textValue])
 
   return (
-    <Flex dir="row">
-      <Text>
-        {textCount} 文字　空白：
-        {halfSpaceCount + fullSpaceCount}　改行：{newLineCount}
+    <Flex dir="row" wrap="wrap">
+      <Text mx={3} whiteSpace="nowrap">
+        {textCount} 文字
+      </Text>
+      <Text mx={3} whiteSpace="nowrap">
+        空白：
+        {halfSpaceCount + fullSpaceCount}
+      </Text>
+      <Text mx={3} whiteSpace="nowrap">
+        改行：{newLineCount}
       </Text>
     </Flex>
   )
