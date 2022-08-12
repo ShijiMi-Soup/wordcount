@@ -11,7 +11,7 @@ export default class Document extends NextDocument {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           <meta name="description" content="シンプルで美しい文字数カウンター" />
-          <meta property="og:url" content=" ページの URL" />
+          {/* <meta property="og:url" content=" ページの URL" /> */}
           <meta property="og:type" content="website" />
           <meta property="og:title" content="文字数カウンター" />
           <meta
