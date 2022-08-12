@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react"
+import { Flex, Text, useBreakpointValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useTextValueContext } from "../providers"
 
@@ -9,6 +9,10 @@ const Counter = () => {
   const [fullSpaceCount, setFullSpaceCount] = useState<number>(0)
   const [newLineCount, setNewLineCount] = useState<number>(0)
   const [paperCount, setPaperCount] = useState<number>(0)
+  const isSmallWindow = useBreakpointValue({
+    base: true,
+    sm: false
+  })
   useEffect(() => {
     if (!textValue.text) {
       setTextCount(0)
@@ -34,10 +38,12 @@ const Counter = () => {
       <Text mx={3} whiteSpace="nowrap">
         {textCount} 文字
       </Text>
-      <Text mx={3} whiteSpace="nowrap">
-        空白：
-        {halfSpaceCount + fullSpaceCount}
-      </Text>
+      {!isSmallWindow && (
+        <Text mx={3} whiteSpace="nowrap">
+          空白：
+          {halfSpaceCount + fullSpaceCount}
+        </Text>
+      )}
       <Text mx={3} whiteSpace="nowrap">
         改行：{newLineCount}
       </Text>

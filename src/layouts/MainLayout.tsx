@@ -15,6 +15,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       w="100%"
       h="100vh"
       p={5}
+      overflow="hidden"
     >
       <Heading as="h1" display="none">
         文字数カウンター
