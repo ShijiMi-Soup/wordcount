@@ -8,7 +8,8 @@ import {
   PopoverContent,
   PopoverBody,
   PopoverHeader,
-  PopoverFooter
+  PopoverFooter,
+  useColorMode
 } from "@chakra-ui/react"
 import Settings from "./Settings"
 
@@ -17,6 +18,7 @@ const SettingsButton = () => {
   const handleButtonClick = () => {
     setIsOpen(true)
   }
+  const { colorMode } = useColorMode()
   return (
     <Popover>
       <PopoverTrigger>
@@ -40,9 +42,17 @@ const SettingsButton = () => {
         </PopoverBody>
         <PopoverFooter>
           <footer>
-            <Text display="block" textAlign="center" fontSize="small">
+            <Text display="block" textAlign="center" fontSize="normal">
               &copy; {new Date().getFullYear()}{" "}
-              <a href="https://shijimi.dev">SHijiMi</a>
+              <a href="https://shijimi.dev">
+                <Text
+                  display="inline"
+                  textDecor="underline"
+                  color={colorMode === "light" ? "teal.600" : "orange.300"}
+                >
+                  SHijiMi
+                </Text>
+              </a>
             </Text>
           </footer>
         </PopoverFooter>

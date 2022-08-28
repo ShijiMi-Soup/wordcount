@@ -20,7 +20,7 @@ const Settings = () => {
         <Slider
           value={settings.fontSize}
           min={6}
-          max={48}
+          max={128}
           step={2}
           onChange={handleChange}
           w={24}
