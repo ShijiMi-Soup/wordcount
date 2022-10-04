@@ -6,17 +6,17 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head>
-          <title>文字数カウンタ-</title>
+          <title>文字数カウンタ</title>
           <link rel="icon" type="image/png" href="/images/favicon.png" />
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           <meta name="description" content="シンプルで美しい文字数カウンター" />
           {/* <meta property="og:url" content=" ページの URL" /> */}
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="文字数カウンター" />
+          <meta property="og:title" content="文字数カウンタ" />
           <meta
             property="og:description"
-            content="シンプルで美しい文字数カウンター"
+            content="シンプルで美しい文字数カウンタ"
           />
           <meta property="og:site_name" content="shijimi.dev" />
           <meta
