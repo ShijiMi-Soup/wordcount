@@ -4,6 +4,9 @@ const withPWA = nextPWA({
   dest: "public",
   register: true,
   skipWaiting: true,
+  fallbacks: {
+    document: "/_offline"
+  },
   runtimeCaching: [
     {
       urlPattern: /\/_next\/static\//,
