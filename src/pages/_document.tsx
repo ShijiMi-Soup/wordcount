@@ -23,6 +23,9 @@ export default class Document extends NextDocument {
             property="og:image"
             content="https://wordcount.shijimi.dev/images/og.png"
           />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/images/icon512_maskable.png" />
+          <meta name="theme-color" content="#1a202c" />
         </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
