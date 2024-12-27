@@ -19,7 +19,7 @@
   "display": "standalone",
   "dir": "auto",
   "lang": "en-US",
-  "name": "WordCount",
+  "name": "Word Count",
   "short_name": "WCount",
   "start_url": "https://wordcount.shijimi.dev/",
   "scope": "https://wordcount.shijimi.dev/"
